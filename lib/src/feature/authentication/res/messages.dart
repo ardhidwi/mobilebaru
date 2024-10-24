@@ -5,4 +5,5 @@ class FailureMessage {
 
 class SuccessMessage {
   static const loginSuccess = "Login Successful";
+  static const registerSuccess = "Registration Successful";
 }

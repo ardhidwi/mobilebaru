@@ -36,7 +36,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RegisterMechanicScreen.routePath,
       builder: (BuildContext context, GoRouterState state) {
-        return const RegisterMechanicScreen();
+        return RegisterMechanicScreen();
       },
     ),
   ],

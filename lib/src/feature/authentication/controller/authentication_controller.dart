@@ -74,4 +74,37 @@ class AuthenticationController extends StateNotifier<bool> {
       },
     );
   }
+
+  Future<UserModel?> register(
+      {BuildContext? context,
+      String? email,
+      String? password,
+      String? name}) async {
+    state = true;
+    final requestBody = {
+      'email': email,
+      'password': password,
+      'name': name,
+      'role': 'mechanic',
+    };
+    final result = await _repo.register(requestBody);
+    return result.fold(
+      (failure) {
+        if (AppConfig.devMode && context != null) {
+          SnackBarService.showSnackBar(
+              context: context, message: failure.message);
+        }
+        state = false;
+        return null;
+      },
+      (user) {
+        if (AppConfig.devMode && context != null) {
+          SnackBarService.showSnackBar(
+              context: context, message: SuccessMessage.loginSuccess);
+        }
+        state = false;
+        return user;
+      },
+    );
+  }
 }
