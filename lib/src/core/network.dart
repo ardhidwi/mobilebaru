@@ -70,7 +70,12 @@ class NetworkRepo {
     try {
       final response = await post(Uri.parse(url),
           body: jsonEncode(body), headers: requestHeaders);
+      log('STATUS CODE : ${response.statusCode}', name: LogLabel.httpPost);
+
       log('RESPONSE : ${response.body}', name: LogLabel.httpPost);
+      if (response.statusCode != 200) {
+        return Left(Failure(message: jsonDecode(response.body)['detail']));
+      }
       return Right(response);
     } catch (e, stktrc) {
       return Left(Failure(

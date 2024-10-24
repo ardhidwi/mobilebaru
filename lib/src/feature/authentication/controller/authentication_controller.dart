@@ -1,3 +1,4 @@
+import 'package:car_workshop_flutter/src/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/repository/authentication_repository.dart';
@@ -6,31 +7,42 @@ import 'package:car_workshop_flutter/src/models/product.dart';
 import 'package:car_workshop_flutter/src/utils/config.dart';
 import 'package:car_workshop_flutter/src/utils/snackbar_service.dart';
 
-final productControllerProvider = Provider((ref) {
-  final repo = ref.watch(productRepoProvider);
-  return ProductController(repo: repo);
+final authenticationControllerProvider =
+    StateNotifierProvider<AuthenticationController, bool>((ref) {
+  final repo = ref.watch(authenticationRepoProvider);
+  return AuthenticationController(repo: repo);
 });
 
-class ProductController {
-  final ProductRepo _repo;
-  ProductController({required ProductRepo repo}) : _repo = repo;
+class AuthenticationController extends StateNotifier<bool> {
+  final AuthenticationRepo _repo;
+  AuthenticationController({required AuthenticationRepo repo})
+      : _repo = repo,
+        super(false);
 
-  Future<List<Product>?> getProducts({BuildContext? context}) async {
-    final result = await _repo.getProducts();
+  Future<UserModel?> login(
+      {BuildContext? context, String? email, String? password}) async {
+    state = true;
+    final requestBody = {
+      'email': email,
+      'password': password,
+    };
+    final result = await _repo.login(requestBody);
     return result.fold(
       (failure) {
         if (AppConfig.devMode && context != null) {
           SnackBarService.showSnackBar(
-              context: context, message: SuccessMessage.productsFetched);
+              context: context, message: failure.message);
         }
+        state = false;
         return null;
       },
-      (products) {
+      (user) {
         if (AppConfig.devMode && context != null) {
           SnackBarService.showSnackBar(
-              context: context, message: FailureMessage.productsFetched);
+              context: context, message: SuccessMessage.loginSuccess);
         }
-        return products;
+        state = false;
+        return user;
       },
     );
   }

@@ -7,7 +7,7 @@ class BasePaths {
   static const baseAnimationPath = "assets/animations";
   static const baseIconPath = "assets/icons";
   static const basePlaceholderPath = "assets/placeholders";
-  static const baseProdUrl = "http://productionURL.com";
-  static const baseTestUrl = "https://dummyjson.com";
+  static const baseProdUrl = "https://car-workshop-fastapi.onrender.com/api/v1";
+  static const baseTestUrl = "https://car-workshop-fastapi.onrender.com/api/v1";
   static const baseUrl = AppConfig.devMode ? baseTestUrl : baseProdUrl;
 }

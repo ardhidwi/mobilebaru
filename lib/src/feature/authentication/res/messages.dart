@@ -1,7 +1,8 @@
 class FailureMessage {
   static const jsonParse = "JSON parsing failed";
-  static const productsFetched = "Fialed to fetch products";
+  static const loginFailed = "Login Failed";
 }
+
 class SuccessMessage {
-  static const productsFetched = "Products fetched successfully";
+  static const loginSuccess = "Login Successful";
 }

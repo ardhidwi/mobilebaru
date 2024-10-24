@@ -5,11 +5,15 @@ class CustomTextfield extends StatefulWidget {
       {super.key,
       required this.icon,
       required this.hintText,
-      required this.isPassword});
+      required this.isPassword,
+      this.controller,
+      this.validator});
 
   final IconData icon;
   final String hintText;
   final bool isPassword;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   State<CustomTextfield> createState() => _CustomTextfieldState();
@@ -43,7 +47,10 @@ class _CustomTextfieldState extends State<CustomTextfield> {
             const SizedBox(width: 10),
             Expanded(
               child: TextFormField(
+                controller: widget.controller,
+                validator: widget.validator,
                 obscureText: showText,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration.collapsed(
                     hintText: widget.hintText,
                     hintStyle: TextStyle(color: Colors.grey)),
