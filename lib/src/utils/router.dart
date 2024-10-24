@@ -30,7 +30,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: AdminLoginScreen.routePath,
       builder: (BuildContext context, GoRouterState state) {
-        return const AdminLoginScreen();
+        return AdminLoginScreen();
       },
     ),
     GoRoute(

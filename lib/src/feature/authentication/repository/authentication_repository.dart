@@ -42,4 +42,28 @@ class AuthenticationRepo {
       },
     );
   }
+
+  FutureEither<UserModel> loginAdmin(Map<String, dynamic> body) async {
+    final result = await _api.postRequest(
+        url: EndPoints.loginAdmin, requireAuth: false, body: body);
+    return result.fold(
+      (Failure failure) {
+        log(failure.message, name: _name);
+        return Left(failure);
+      },
+      (Response response) {
+        try {
+          final data = jsonDecode(response.body);
+          final user = UserModel.fromJson(data);
+          return Right(user);
+        } catch (e, stktrc) {
+          log(FailureMessage.jsonParsingFailed, name: _name);
+          return Left(Failure(
+            message: FailureMessage.jsonParsingFailed,
+            stackTrace: stktrc,
+          ));
+        }
+      },
+    );
+  }
 }

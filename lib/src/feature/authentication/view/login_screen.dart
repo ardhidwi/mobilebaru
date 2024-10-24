@@ -25,7 +25,6 @@ class LoginScreen extends ConsumerWidget {
     var width = MediaQuery.of(context).size.width;
 
     final isloading = ref.watch(authenticationControllerProvider);
-    print('Build called,, isLoading = $isloading');
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
