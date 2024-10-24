@@ -1,16 +1,15 @@
-import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
-import 'package:car_workshop_flutter/src/feature/authentication/view/register_mechanic_screen.dart';
+import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:car_workshop_flutter/src/utils/asset_urls.dart';
 import 'package:car_workshop_flutter/src/utils/custom_button.dart';
 import 'package:car_workshop_flutter/src/utils/custom_textfield.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class LoginScreen extends ConsumerWidget {
-  const LoginScreen({super.key});
+class AdminLoginScreen extends ConsumerWidget {
+  const AdminLoginScreen({super.key});
 
-  static const routePath = "/login";
+  static const routePath = "/loginAdmin";
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,7 +32,7 @@ class LoginScreen extends ConsumerWidget {
               const Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Welcome back!',
+                  'Admin Login',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -44,7 +43,7 @@ class LoginScreen extends ConsumerWidget {
                 height: 20,
               ),
               const Text(
-                'Email',
+                'Admin Email',
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -59,7 +58,7 @@ class LoginScreen extends ConsumerWidget {
                 height: 20,
               ),
               const Text(
-                'Password',
+                'Admin Password',
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -93,22 +92,10 @@ class LoginScreen extends ConsumerWidget {
                 alignment: Alignment.center,
                 child: TextButton(
                   onPressed: () {
-                    context.go(AdminLoginScreen.routePath);
+                    context.go(LoginScreen.routePath);
                   },
                   child: const Text(
-                    'Login as administrator',
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: TextButton(
-                  onPressed: () {
-                    context.go(RegisterMechanicScreen.routePath);
-                  },
-                  child: const Text(
-                    'Register as a mechanic',
+                    'Login as Mechanic',
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),
