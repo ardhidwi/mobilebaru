@@ -4,4 +4,5 @@ class EndPoints {
   static const _base = BasePaths.baseUrl;
   static const bookings = "$_base/bookings";
   static const bookingsByDateRange = "$_base/bookings/range";
+  static const users = "$_base/users";
 }

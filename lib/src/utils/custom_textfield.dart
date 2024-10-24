@@ -49,6 +49,8 @@ class _CustomTextfieldState extends State<CustomTextfield> {
               child: TextFormField(
                 controller: widget.controller,
                 validator: widget.validator,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
                 obscureText: showText,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration.collapsed(
