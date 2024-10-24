@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         title: const Text(AppStrings.appName),
       ),
-      body: const ProductsList(),
+      body: const LoginScreen(),
     );
   }
 }

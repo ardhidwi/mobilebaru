@@ -1,3 +1,4 @@
+import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:car_workshop_flutter/src/utils/asset_urls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,8 +26,8 @@ class _SplashViewState extends ConsumerState<SplashView> {
     if (AppConfig.devMode) {
       /// bypass authenticaion logic.
       /// Navigate to Home
-      Future.delayed(const Duration(seconds: 2)).then((value) {
-        // context.go(HomeView.routePath);
+      Future.delayed(const Duration(seconds: 3)).then((value) {
+        context.go(LoginScreen.routePath);
       });
     } else {
       ref.read(initControllerProvider).initUserAndToken().then((value) {

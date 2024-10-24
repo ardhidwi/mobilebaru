@@ -1,3 +1,4 @@
+import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:car_workshop_flutter/src/global/views/splash.dart';
 import 'package:car_workshop_flutter/src/feature/home/view/home.dart';
@@ -16,6 +17,12 @@ final GoRouter router = GoRouter(
       path: HomeView.routePath,
       builder: (BuildContext context, GoRouterState state) {
         return const HomeView();
+      },
+    ),
+    GoRoute(
+      path: LoginScreen.routePath,
+      builder: (BuildContext context, GoRouterState state) {
+        return const LoginScreen();
       },
     ),
   ],
