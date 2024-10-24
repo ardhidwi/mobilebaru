@@ -1,4 +1,5 @@
 import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
+import 'package:car_workshop_flutter/src/global/controller/shared_prefs_controller.dart';
 import 'package:car_workshop_flutter/src/utils/asset_urls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,25 +24,19 @@ class _SplashViewState extends ConsumerState<SplashView> {
     super.initState();
 
     /// check if the app is running in dev mode
-    if (AppConfig.devMode) {
-      /// bypass authenticaion logic.
-      /// Navigate to Home
-      Future.delayed(const Duration(seconds: 3)).then((value) {
-        context.go(LoginScreen.routePath);
-      });
-    } else {
-      ref.read(initControllerProvider).initUserAndToken().then((value) {
-        final user = ref.read(currentUserProvider);
 
-        /// Check if both the [user] and [token] have value
-        if (user == null) {
-          /// Route the user to Authenticaion screen
-        } else {
-          /// Route the user to Home screen
-          context.go(HomeView.routePath);
-        }
-      });
-    }
+    /// bypass authenticaion logic.
+    /// Navigate to Home
+    Future.delayed(const Duration(seconds: 3)).then((value) {
+      final user = ref.read(sharedPrefsControllerPovider).getUser();
+      if (user == null) {
+        /// Route the user to Authenticaion screen
+        context.go(LoginScreen.routePath);
+      } else {
+        /// Route the user to Home screen
+        context.go(HomeView.routePath);
+      }
+    });
   }
 
   @override

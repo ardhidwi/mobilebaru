@@ -1,3 +1,4 @@
+import 'package:car_workshop_flutter/src/global/controller/shared_prefs_controller.dart';
 import 'package:car_workshop_flutter/src/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,12 +11,13 @@ import 'package:car_workshop_flutter/src/utils/snackbar_service.dart';
 final authenticationControllerProvider =
     StateNotifierProvider<AuthenticationController, bool>((ref) {
   final repo = ref.watch(authenticationRepoProvider);
-  return AuthenticationController(repo: repo);
+  return AuthenticationController(ref, repo: repo);
 });
 
 class AuthenticationController extends StateNotifier<bool> {
   final AuthenticationRepo _repo;
-  AuthenticationController({required AuthenticationRepo repo})
+  final Ref ref;
+  AuthenticationController(this.ref, {required AuthenticationRepo repo})
       : _repo = repo,
         super(false);
 
@@ -41,6 +43,8 @@ class AuthenticationController extends StateNotifier<bool> {
           SnackBarService.showSnackBar(
               context: context, message: SuccessMessage.loginSuccess);
         }
+
+        ref.read(sharedPrefsControllerPovider).setUser(user: user);
         state = false;
         return user;
       },
@@ -69,6 +73,7 @@ class AuthenticationController extends StateNotifier<bool> {
           SnackBarService.showSnackBar(
               context: context, message: SuccessMessage.loginSuccess);
         }
+        ref.read(sharedPrefsControllerPovider).setUser(user: user);
         state = false;
         return user;
       },
@@ -100,7 +105,7 @@ class AuthenticationController extends StateNotifier<bool> {
       (user) {
         if (AppConfig.devMode && context != null) {
           SnackBarService.showSnackBar(
-              context: context, message: SuccessMessage.loginSuccess);
+              context: context, message: SuccessMessage.registerSuccess);
         }
         state = false;
         return user;
