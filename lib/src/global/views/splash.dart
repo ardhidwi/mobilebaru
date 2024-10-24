@@ -1,3 +1,4 @@
+import 'package:car_workshop_flutter/src/feature/admin/bookings/view/admin_dashboard.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:car_workshop_flutter/src/global/controller/shared_prefs_controller.dart';
 import 'package:car_workshop_flutter/src/utils/asset_urls.dart';
@@ -27,14 +28,16 @@ class _SplashViewState extends ConsumerState<SplashView> {
 
     /// bypass authenticaion logic.
     /// Navigate to Home
-    Future.delayed(const Duration(seconds: 3)).then((value) {
-      final user = ref.read(sharedPrefsControllerPovider).getUser();
+    Future.delayed(const Duration(seconds: 3)).then((value) async {
+      final user = await ref.read(sharedPrefsControllerPovider).getUser();
       if (user == null) {
         /// Route the user to Authenticaion screen
         context.go(LoginScreen.routePath);
-      } else {
+      } else if (user.role == 'admin') {
         /// Route the user to Home screen
-        context.go(HomeView.routePath);
+        context.go(AdminDashboardScreen.routePath);
+      } else {
+        context.go(AdminDashboardScreen.routePath);
       }
     });
   }

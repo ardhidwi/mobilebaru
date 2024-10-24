@@ -1,3 +1,4 @@
+import 'package:car_workshop_flutter/src/feature/admin/bookings/view/admin_dashboard.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/register_mechanic_screen.dart';
@@ -37,6 +38,12 @@ final GoRouter router = GoRouter(
       path: RegisterMechanicScreen.routePath,
       builder: (BuildContext context, GoRouterState state) {
         return RegisterMechanicScreen();
+      },
+    ),
+    GoRoute(
+      path: AdminDashboardScreen.routePath,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AdminDashboardScreen();
       },
     ),
   ],
