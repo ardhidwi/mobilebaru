@@ -1,20 +1,18 @@
-import 'dart:math';
-
 import 'package:car_workshop_flutter/src/feature/authentication/controller/authentication_controller.dart';
-import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
-import 'package:car_workshop_flutter/src/feature/authentication/view/register_mechanic_screen.dart';
+import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:car_workshop_flutter/src/utils/asset_urls.dart';
 import 'package:car_workshop_flutter/src/utils/custom_button.dart';
 import 'package:car_workshop_flutter/src/utils/custom_textfield.dart';
 import 'package:car_workshop_flutter/src/utils/validators.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class LoginScreen extends ConsumerWidget {
-  LoginScreen({super.key});
+class AdminLoginScreen extends ConsumerWidget {
+  AdminLoginScreen({super.key});
 
-  static const routePath = "/login";
+  static const routePath = "/loginAdmin";
+
   final _formkey = GlobalKey<FormState>();
   final _emailCont = TextEditingController();
   final _passCont = TextEditingController();
@@ -23,7 +21,6 @@ class LoginScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
     final isloading = ref.watch(authenticationControllerProvider);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -44,7 +41,7 @@ class LoginScreen extends ConsumerWidget {
                 const Align(
                   alignment: Alignment.center,
                   child: Text(
-                    'Welcome back!',
+                    'Admin Login',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -55,7 +52,7 @@ class LoginScreen extends ConsumerWidget {
                   height: 20,
                 ),
                 const Text(
-                  'Email',
+                  'Admin Email',
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -74,7 +71,7 @@ class LoginScreen extends ConsumerWidget {
                   height: 20,
                 ),
                 const Text(
-                  'Password',
+                  'Admin Password',
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -118,22 +115,10 @@ class LoginScreen extends ConsumerWidget {
                   alignment: Alignment.center,
                   child: TextButton(
                     onPressed: () {
-                      context.go(AdminLoginScreen.routePath);
+                      context.go(LoginScreen.routePath);
                     },
                     child: const Text(
-                      'Login as administrator',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: TextButton(
-                    onPressed: () {
-                      context.go(RegisterMechanicScreen.routePath);
-                    },
-                    child: const Text(
-                      'Register as a mechanic',
+                      'Login as Mechanic',
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),
@@ -148,7 +133,7 @@ class LoginScreen extends ConsumerWidget {
 
   _onLoginButtonPressed(BuildContext ctx, WidgetRef ref) async {
     if (_formkey.currentState!.validate()) {
-      ref.read(authenticationControllerProvider.notifier).login(
+      ref.read(authenticationControllerProvider.notifier).loginAdmin(
           context: ctx, email: _emailCont.text, password: _passCont.text);
     }
   }

@@ -1,3 +1,4 @@
+import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:car_workshop_flutter/src/res/strings.dart';
@@ -13,7 +14,7 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         title: const Text(AppStrings.appName),
       ),
-      body: const ProductsList(),
+      body: AdminLoginScreen(),
     );
   }
 }

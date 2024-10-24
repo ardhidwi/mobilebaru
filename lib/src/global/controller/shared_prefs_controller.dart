@@ -1,3 +1,4 @@
+import 'package:car_workshop_flutter/src/models/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:car_workshop_flutter/src/core/core.dart';
 import 'package:car_workshop_flutter/src/global/repo/shared_prefs_repo.dart';
@@ -21,11 +22,11 @@ class SharedPrefsController {
     await _repo.setCookie(cookie);
   }
 
-  Future<User?> getUser() async {
+  Future<UserModel?> getUser() async {
     return _repo.getCurrentUser();
   }
 
-  FutureVoid setUser({required User user}) async {
+  FutureVoid setUser({required UserModel user}) async {
     _repo.setCurrentUser(user);
   }
 

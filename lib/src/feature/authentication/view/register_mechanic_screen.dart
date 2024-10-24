@@ -1,8 +1,6 @@
-import 'dart:math';
-
 import 'package:car_workshop_flutter/src/feature/authentication/controller/authentication_controller.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
-import 'package:car_workshop_flutter/src/feature/authentication/view/register_mechanic_screen.dart';
+import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:car_workshop_flutter/src/utils/asset_urls.dart';
 import 'package:car_workshop_flutter/src/utils/custom_button.dart';
 import 'package:car_workshop_flutter/src/utils/custom_textfield.dart';
@@ -11,19 +9,21 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends ConsumerWidget {
-  LoginScreen({super.key});
+class RegisterMechanicScreen extends ConsumerWidget {
+  RegisterMechanicScreen({super.key});
 
-  static const routePath = "/login";
+  static const routePath = "/registerMechanic";
+
   final _formkey = GlobalKey<FormState>();
   final _emailCont = TextEditingController();
   final _passCont = TextEditingController();
+  final _passConfirmCont = TextEditingController();
+  final _nameCont = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
     final isloading = ref.watch(authenticationControllerProvider);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -44,12 +44,31 @@ class LoginScreen extends ConsumerWidget {
                 const Align(
                   alignment: Alignment.center,
                   child: Text(
-                    'Welcome back!',
+                    'Register Mechanic',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(
                   height: 20,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  'Name',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                CustomTextfield(
+                  hintText: 'Enter name',
+                  isPassword: false,
+                  icon: Icons.email,
+                  controller: _nameCont,
+                  validator: (value) {
+                    return Validators.validateName(_nameCont.text);
+                  },
                 ),
                 const SizedBox(
                   height: 20,
@@ -92,9 +111,29 @@ class LoginScreen extends ConsumerWidget {
                 const SizedBox(
                   height: 20,
                 ),
+                const Text(
+                  'Confirm Password',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                CustomTextfield(
+                  hintText: 'Confirm Password',
+                  isPassword: true,
+                  icon: Icons.password,
+                  controller: _passConfirmCont,
+                  validator: (value) {
+                    return Validators.validateConfirmPassword(
+                        _passConfirmCont.text, _passCont.text);
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 CustomButton(
                   onPressed: () {
-                    _onLoginButtonPressed(context, ref);
+                    _onRegisterButtonPressed(context, ref);
                   },
                   backgroundColor: Colors.red,
                   textColor: Colors.white,
@@ -103,7 +142,7 @@ class LoginScreen extends ConsumerWidget {
                           color: Colors.white,
                         )
                       : const Text(
-                          'Login',
+                          'Register',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -118,22 +157,10 @@ class LoginScreen extends ConsumerWidget {
                   alignment: Alignment.center,
                   child: TextButton(
                     onPressed: () {
-                      context.go(AdminLoginScreen.routePath);
+                      context.go(LoginScreen.routePath);
                     },
                     child: const Text(
-                      'Login as administrator',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: TextButton(
-                    onPressed: () {
-                      context.go(RegisterMechanicScreen.routePath);
-                    },
-                    child: const Text(
-                      'Register as a mechanic',
+                      'Login as mechanic',
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),
@@ -146,10 +173,14 @@ class LoginScreen extends ConsumerWidget {
     );
   }
 
-  _onLoginButtonPressed(BuildContext ctx, WidgetRef ref) async {
+  _onRegisterButtonPressed(BuildContext ctx, WidgetRef ref) async {
     if (_formkey.currentState!.validate()) {
-      ref.read(authenticationControllerProvider.notifier).login(
-          context: ctx, email: _emailCont.text, password: _passCont.text);
+      ref.read(authenticationControllerProvider.notifier).register(
+            context: ctx,
+            email: _emailCont.text,
+            password: _passCont.text,
+            name: _nameCont.text,
+          );
     }
   }
 }

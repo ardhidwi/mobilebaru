@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:car_workshop_flutter/src/models/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:car_workshop_flutter/src/core/core.dart';
 import 'package:car_workshop_flutter/src/models/user.dart';
@@ -24,18 +25,18 @@ class SharedPrefsRepo {
     return cookie;
   }
 
-  Future<User?> getCurrentUser() async {
+  Future<UserModel?> getCurrentUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final data = prefs.getString(_currentUserKey);
     if (AppConfig.devMode) {
       log("Reading user", name: _name);
       log("Data : $data", name: _name);
     }
-    final user = data != null ? User.fromJson(jsonDecode(data)) : null;
+    final user = data != null ? UserModel.fromJson(jsonDecode(data)) : null;
     return user;
   }
 
-  FutureVoid setCurrentUser(User user) async {
+  FutureVoid setCurrentUser(UserModel user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (AppConfig.devMode) {
       log("Saving user", name: _name);
