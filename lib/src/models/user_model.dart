@@ -15,10 +15,10 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
-    data['email'] = this.email;
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['role'] = this.role;
+    data['email'] = email;
+    data['id'] = id;
+    data['name'] = name;
+    data['role'] = role;
     return data;
   }
 }

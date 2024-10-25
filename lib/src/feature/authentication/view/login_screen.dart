@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:car_workshop_flutter/src/feature/authentication/controller/authentication_controller.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/register_mechanic_screen.dart';
@@ -22,7 +20,6 @@ class LoginScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
 
     final isloading = ref.watch(authenticationControllerProvider);
     return Scaffold(

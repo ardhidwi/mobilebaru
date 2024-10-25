@@ -14,17 +14,17 @@ class CustomDropdownFormField extends StatefulWidget {
 }
 
 class _CustomDropdownFormFieldState extends State<CustomDropdownFormField> {
-  UserModel? _selectedValue;
+  UserModel? selectedValue;
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<UserModel>(
       value: widget.initialValue ?? widget.initialValue,
-      hint: Text('Select a mechanic'),
-      icon: Icon(Icons.arrow_drop_down),
+      hint: const Text('Select a mechanic'),
+      icon: const Icon(Icons.arrow_drop_down),
       iconSize: 24,
       elevation: 16,
-      style: TextStyle(color: Colors.black),
+      style: const TextStyle(color: Colors.black),
       validator: (value) {
         if (value == null) {
           return 'Please select a mechanic to assign to the job';
@@ -41,7 +41,7 @@ class _CustomDropdownFormFieldState extends State<CustomDropdownFormField> {
       onChanged: (UserModel? newValue) {
         widget.onChanged!(newValue);
         setState(() {
-          _selectedValue = newValue;
+          selectedValue = newValue;
         });
       },
       items: widget.options.map<DropdownMenuItem<UserModel>>((UserModel value) {

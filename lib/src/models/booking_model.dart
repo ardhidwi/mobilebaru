@@ -43,27 +43,26 @@ class BookingModel {
     start = json['start'];
     end = json['end'];
     status = json['status'];
-    mechanic = json['mechanic'] != null
-        ? new UserModel.fromJson(json['mechanic'])
-        : null;
+    mechanic =
+        json['mechanic'] != null ? UserModel.fromJson(json['mechanic']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['id'] = this.id;
-    data['car_make'] = this.carMake;
-    data['car_model'] = this.carModel;
-    data['car_year'] = this.carYear;
-    data['car_registration'] = this.carRegistration;
-    data['customer_name'] = this.customerName;
-    data['customer_email'] = this.customerEmail;
-    data['customer_phone'] = this.customerPhone;
-    data['start'] = this.start;
-    data['end'] = this.end;
-    data['status'] = this.status;
-    if (this.mechanic != null) {
-      data['mechanic'] = this.mechanic!.toJson();
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['title'] = title;
+    data['id'] = id;
+    data['car_make'] = carMake;
+    data['car_model'] = carModel;
+    data['car_year'] = carYear;
+    data['car_registration'] = carRegistration;
+    data['customer_name'] = customerName;
+    data['customer_email'] = customerEmail;
+    data['customer_phone'] = customerPhone;
+    data['start'] = start;
+    data['end'] = end;
+    data['status'] = status;
+    if (mechanic != null) {
+      data['mechanic'] = mechanic!.toJson();
     }
     return data;
   }

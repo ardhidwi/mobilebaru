@@ -1,19 +1,16 @@
 import 'package:car_workshop_flutter/src/core/base_state.dart';
-import 'package:car_workshop_flutter/src/feature/admin/bookings/repository/bookings_repository.dart';
-import 'package:car_workshop_flutter/src/feature/admin/bookings/view/admin_dashboard.dart';
+
 import 'package:car_workshop_flutter/src/feature/mechanic/bookings/repository/mechanic_bookings_repository.dart';
 import 'package:car_workshop_flutter/src/global/controller/shared_prefs_controller.dart';
 import 'package:car_workshop_flutter/src/models/booking_model.dart';
-import 'package:car_workshop_flutter/src/models/user_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:car_workshop_flutter/src/feature/authentication/repository/authentication_repository.dart';
+
 import 'package:car_workshop_flutter/src/feature/admin/bookings/res/messages.dart';
-import 'package:car_workshop_flutter/src/models/product.dart';
+
 import 'package:car_workshop_flutter/src/utils/config.dart';
 import 'package:car_workshop_flutter/src/utils/snackbar_service.dart';
-import 'package:intl/intl.dart';
-import 'package:go_router/go_router.dart';
 
 final mechanicBookingControllerProvider =
     StateNotifierProvider<MechanicBookingController, BaseState>((ref) {

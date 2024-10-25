@@ -1,15 +1,12 @@
 import 'package:car_workshop_flutter/src/core/base_state.dart';
-import 'package:car_workshop_flutter/src/feature/admin/bookings/controller/bookings_controller.dart';
-import 'package:car_workshop_flutter/src/feature/admin/bookings/view/widgets/add_new_booking_widget.dart';
+
 import 'package:car_workshop_flutter/src/feature/admin/bookings/view/widgets/booking_card_widget.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/controller/authentication_controller.dart';
-import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
+
 import 'package:car_workshop_flutter/src/feature/mechanic/bookings/controller/mechanic_bookings_controller.dart';
-import 'package:car_workshop_flutter/src/utils/custom_button.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
-import 'package:go_router/go_router.dart';
 
 class MechanicDashboardScreen extends ConsumerWidget {
   const MechanicDashboardScreen({super.key});
@@ -21,7 +18,6 @@ class MechanicDashboardScreen extends ConsumerWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
-    final dateRange = ref.watch(dateRangeProvider);
     final mechanicBookingController =
         ref.watch(mechanicBookingControllerProvider);
 
@@ -29,7 +25,7 @@ class MechanicDashboardScreen extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text(
+          title: const Text(
             'Mechanic Dashboard',
             style: TextStyle(color: Colors.white),
           ),
@@ -39,20 +35,20 @@ class MechanicDashboardScreen extends ConsumerWidget {
                 onPressed: () {
                   _onLogoutButtonPressed(context, ref);
                 },
-                icon: Icon(Icons.logout, color: Colors.white))
+                icon: const Icon(Icons.logout, color: Colors.white))
           ],
         ),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(20),
-          child: Container(
+          padding: const EdgeInsets.all(20),
+          child: SizedBox(
             height: height,
             width: width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Text(
+                const Text(
                   "My Bookings",
                   style: TextStyle(
                     fontSize: 25,
@@ -92,7 +88,7 @@ class MechanicDashboardScreen extends ConsumerWidget {
                     child: Column(
                       children: [
                         ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: mechanicBookingController.data.length,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {

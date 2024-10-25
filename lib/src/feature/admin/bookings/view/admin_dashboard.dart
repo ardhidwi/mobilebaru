@@ -3,7 +3,7 @@ import 'package:car_workshop_flutter/src/feature/admin/bookings/controller/booki
 import 'package:car_workshop_flutter/src/feature/admin/bookings/view/widgets/add_new_booking_widget.dart';
 import 'package:car_workshop_flutter/src/feature/admin/bookings/view/widgets/booking_card_widget.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/controller/authentication_controller.dart';
-import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -17,7 +17,6 @@ class AdminDashboardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
 
     final dateRange = ref.watch(dateRangeProvider);
     final bookingController = ref.watch(bookingControllerProvider);
@@ -26,7 +25,7 @@ class AdminDashboardScreen extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text(
+          title: const Text(
             'Admin Dashboard',
             style: TextStyle(color: Colors.white),
           ),
@@ -36,7 +35,7 @@ class AdminDashboardScreen extends ConsumerWidget {
                 onPressed: () {
                   _onLogoutButtonPressed(context, ref);
                 },
-                icon: Icon(Icons.logout, color: Colors.white))
+                icon: const Icon(Icons.logout, color: Colors.white))
           ],
         ),
         backgroundColor: Colors.white,
@@ -44,16 +43,16 @@ class AdminDashboardScreen extends ConsumerWidget {
           onPressed: () {
             _onAddNewBookingButtonPressed(context);
           },
-          child: Icon(
+          backgroundColor: Colors.red.shade200,
+          child: const Icon(
             Icons.add_circle_outline,
             size: 30,
             color: Colors.white,
           ),
-          backgroundColor: Colors.red.shade200,
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(20),
-          child: Container(
+          padding: const EdgeInsets.all(20),
+          child: SizedBox(
             height: height,
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -64,15 +63,16 @@ class AdminDashboardScreen extends ConsumerWidget {
                   },
                   child: Container(
                     alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                     decoration: BoxDecoration(
                         color: Colors.grey[400],
                         borderRadius: BorderRadius.circular(16)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.calendar_month_outlined),
-                        SizedBox(
+                        const Icon(Icons.calendar_month_outlined),
+                        const SizedBox(
                           width: 5,
                         ),
                         Text(
@@ -81,7 +81,7 @@ class AdminDashboardScreen extends ConsumerWidget {
                           )} - ${DateFormat.yMMMMd().format(
                             dateRange[1],
                           )}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -89,7 +89,7 @@ class AdminDashboardScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -100,12 +100,12 @@ class AdminDashboardScreen extends ConsumerWidget {
                         _onSelectToday(context, ref);
                       },
                       child: Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 20),
                         decoration: BoxDecoration(
                             color: Colors.grey[400],
                             borderRadius: BorderRadius.circular(16)),
-                        child: Text(
+                        child: const Text(
                           'Today',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -118,12 +118,12 @@ class AdminDashboardScreen extends ConsumerWidget {
                         _onSelectLastWeek(context, ref);
                       },
                       child: Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 20),
                         decoration: BoxDecoration(
                             color: Colors.grey[400],
                             borderRadius: BorderRadius.circular(16)),
-                        child: Text(
+                        child: const Text(
                           'Last Week',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -136,12 +136,12 @@ class AdminDashboardScreen extends ConsumerWidget {
                         _onSelectLastMonth(context, ref);
                       },
                       child: Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 20),
                         decoration: BoxDecoration(
                             color: Colors.grey[400],
                             borderRadius: BorderRadius.circular(16)),
-                        child: Text(
+                        child: const Text(
                           'Last Month',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -178,11 +178,11 @@ class AdminDashboardScreen extends ConsumerWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: bookingController.data.length,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
@@ -225,21 +225,24 @@ class AdminDashboardScreen extends ConsumerWidget {
 
   _onSelectLastWeek(BuildContext ctx, WidgetRef ref) async {
     ref.read(dateRangeProvider.notifier).update((state) {
-      return [DateTime.now().subtract(Duration(days: 7)), DateTime.now()];
+      return [DateTime.now().subtract(const Duration(days: 7)), DateTime.now()];
     });
     ref.read(bookingControllerProvider.notifier).getBookingsByDateRange(
         context: ctx,
-        start: DateTime.now().subtract(Duration(days: 7)),
+        start: DateTime.now().subtract(const Duration(days: 7)),
         end: DateTime.now());
   }
 
   _onSelectLastMonth(BuildContext ctx, WidgetRef ref) async {
     ref.read(dateRangeProvider.notifier).update((state) {
-      return [DateTime.now().subtract(Duration(days: 30)), DateTime.now()];
+      return [
+        DateTime.now().subtract(const Duration(days: 30)),
+        DateTime.now()
+      ];
     });
     ref.read(bookingControllerProvider.notifier).getBookingsByDateRange(
         context: ctx,
-        start: DateTime.now().subtract(Duration(days: 30)),
+        start: DateTime.now().subtract(const Duration(days: 30)),
         end: DateTime.now());
   }
 

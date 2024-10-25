@@ -38,12 +38,12 @@ class AddNewBookingWidget extends ConsumerWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: mechanicsController is LoadingState
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : mechanicsController is SuccessState
                 ? SingleChildScrollView(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -56,7 +56,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                           CustomTextfield(
@@ -68,7 +68,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                               return Validators.validateName(_titleCont.text);
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           const Text(
@@ -92,7 +92,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                                   },
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Flexible(
@@ -109,7 +109,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -126,7 +126,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                                   },
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Flexible(
@@ -143,7 +143,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           const Text(
@@ -162,7 +162,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                               return Validators.validateName(_nameCont.text);
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -179,7 +179,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                                   },
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Flexible(
@@ -196,7 +196,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           const Text(
@@ -212,7 +212,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                             },
                             child: Container(
                               alignment: Alignment.center,
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 20),
                               decoration: BoxDecoration(
                                   color: Colors.grey[400],
@@ -220,8 +220,8 @@ class AddNewBookingWidget extends ConsumerWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(Icons.calendar_month_outlined),
-                                  SizedBox(
+                                  const Icon(Icons.calendar_month_outlined),
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   Text(
@@ -230,7 +230,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                                     )} - ${DateFormat.yMMMMd().format(
                                       dateRange[1],
                                     )}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -238,7 +238,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           const Text(
@@ -248,7 +248,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           CustomDropdownFormField(
@@ -257,7 +257,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                               selectedUser = user!;
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                           CustomButton(
@@ -283,7 +283,7 @@ class AddNewBookingWidget extends ConsumerWidget {
                       ),
                     ),
                   )
-                : Text('Something Went Wrong!'),
+                : const Text('Something Went Wrong!'),
       ),
     );
   }
@@ -292,7 +292,7 @@ class AddNewBookingWidget extends ConsumerWidget {
     final dateRange = await showDateRangePicker(
       context: ctx,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(Duration(days: 30)),
+      lastDate: DateTime.now().add(const Duration(days: 30)),
     );
     if (dateRange != null) {
       ref.read(newBookingdateRangeProvider.notifier).update((state) {

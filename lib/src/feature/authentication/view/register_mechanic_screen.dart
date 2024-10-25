@@ -1,5 +1,4 @@
 import 'package:car_workshop_flutter/src/feature/authentication/controller/authentication_controller.dart';
-import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:car_workshop_flutter/src/utils/asset_urls.dart';
 import 'package:car_workshop_flutter/src/utils/custom_button.dart';
@@ -23,7 +22,6 @@ class RegisterMechanicScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     final isloading = ref.watch(authenticationControllerProvider);
     return Scaffold(
       backgroundColor: Colors.white,

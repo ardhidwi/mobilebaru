@@ -18,24 +18,24 @@ class BookingCardWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: Colors.grey[300],
           ),
-          margin: EdgeInsets.only(bottom: 10),
-          padding: EdgeInsets.all(10),
+          margin: const EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.all(10),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.blue,
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.car_crash_outlined,
                   size: 40,
                   color: Colors.white,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Column(
@@ -43,7 +43,8 @@ class BookingCardWidget extends StatelessWidget {
                 children: [
                   Text(
                     booking.title!,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     '${booking.carMake} ${booking.carModel}',
@@ -58,9 +59,10 @@ class BookingCardWidget extends StatelessWidget {
                   Text('Mechanic: ${booking.mechanic!.name}'),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Container(
-                  padding: EdgeInsets.symmetric(vertical: 2, horizontal: 16),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 2, horizontal: 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: booking.status == 'active'
@@ -68,7 +70,7 @@ class BookingCardWidget extends StatelessWidget {
                         : Colors.green.shade600,
                   ),
                   child: Text(booking.status!,
-                      style: TextStyle(color: Colors.white))),
+                      style: const TextStyle(color: Colors.white))),
             ],
           )),
     );
@@ -91,13 +93,13 @@ class BookingCardWidget extends StatelessWidget {
                       Flexible(
                         child: Text(
                           booking.title!,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 30, fontWeight: FontWeight.bold),
                         ),
                       ),
                       Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 2, horizontal: 16),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 2, horizontal: 16),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: booking.status == 'active'
@@ -106,28 +108,28 @@ class BookingCardWidget extends StatelessWidget {
                         ),
                         child: Text(
                           booking.status!,
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
                     children: [
-                      Icon(Icons.calendar_month),
+                      const Icon(Icons.calendar_month),
                       Text(
                         '${DateFormat.yMMMMd().format(DateTime.parse(booking.start!))} - ${DateFormat.yMMMMd().format(DateTime.parse(booking.end!))}',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text('Vehicle Details'),
                       SizedBox(
@@ -152,7 +154,7 @@ class BookingCardWidget extends StatelessWidget {
                       ),
                       Text(
                         booking.carMake!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
@@ -171,7 +173,7 @@ class BookingCardWidget extends StatelessWidget {
                       ),
                       Text(
                         booking.carModel!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
@@ -190,17 +192,17 @@ class BookingCardWidget extends StatelessWidget {
                       ),
                       Text(
                         booking.carYear!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text('Customer Details'),
                       SizedBox(
@@ -226,7 +228,7 @@ class BookingCardWidget extends StatelessWidget {
                       ),
                       Text(
                         booking.customerName!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
@@ -245,7 +247,7 @@ class BookingCardWidget extends StatelessWidget {
                       ),
                       Text(
                         booking.customerEmail!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
@@ -264,17 +266,17 @@ class BookingCardWidget extends StatelessWidget {
                       ),
                       Text(
                         booking.customerPhone!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Text('Mechanic Details'),
                       SizedBox(
@@ -299,7 +301,7 @@ class BookingCardWidget extends StatelessWidget {
                       ),
                       Text(
                         booking.mechanic!.name!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),

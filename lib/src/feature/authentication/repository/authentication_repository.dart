@@ -4,7 +4,6 @@ import 'package:car_workshop_flutter/src/models/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:car_workshop_flutter/src/core/core.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/res/endpoints.dart';
-import 'package:car_workshop_flutter/src/models/product.dart';
 import 'package:car_workshop_flutter/src/res/strings.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart';

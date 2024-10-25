@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/repository/authentication_repository.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/res/messages.dart';
-import 'package:car_workshop_flutter/src/models/product.dart';
 import 'package:car_workshop_flutter/src/utils/config.dart';
 import 'package:car_workshop_flutter/src/utils/snackbar_service.dart';
 import 'package:go_router/go_router.dart';

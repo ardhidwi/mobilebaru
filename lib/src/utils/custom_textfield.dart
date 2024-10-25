@@ -24,7 +24,6 @@ class _CustomTextfieldState extends State<CustomTextfield> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     showText = widget.isPassword;
   }
@@ -32,7 +31,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
           color: Colors.white,
@@ -57,7 +56,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration.collapsed(
                     hintText: widget.hintText,
-                    hintStyle: TextStyle(color: Colors.grey)),
+                    hintStyle: const TextStyle(color: Colors.grey)),
               ),
             ),
             if (widget.isPassword)

@@ -20,7 +20,6 @@ class AdminLoginScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     final isloading = ref.watch(authenticationControllerProvider);
     return Scaffold(
       backgroundColor: Colors.white,

@@ -2,7 +2,6 @@ import 'package:car_workshop_flutter/src/models/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:car_workshop_flutter/src/core/core.dart';
 import 'package:car_workshop_flutter/src/global/repo/shared_prefs_repo.dart';
-import 'package:car_workshop_flutter/src/models/user.dart';
 
 final sharedPrefsControllerPovider = Provider((ref) {
   final repo = ref.watch(sharedPrefsRepoProvider);

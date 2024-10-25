@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:car_workshop_flutter/src/models/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:car_workshop_flutter/src/core/core.dart';
-import 'package:car_workshop_flutter/src/models/user.dart';
+
 import 'package:car_workshop_flutter/src/utils/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
