@@ -58,4 +58,4 @@ flutter run
 ```
 
 ## Install Release APK
-For direction installation of the app without having to setup and build the project, a release build can be found here: `/release`
+For direction installation of the app without having to setup and build the project, a release build can be found here: [Release APK](https://github.com/MrPengueeen/car_workshop_flutter/tree/master/release)
