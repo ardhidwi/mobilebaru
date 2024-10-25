@@ -2,6 +2,7 @@ import 'package:car_workshop_flutter/src/core/base_state.dart';
 import 'package:car_workshop_flutter/src/feature/admin/bookings/controller/bookings_controller.dart';
 import 'package:car_workshop_flutter/src/feature/admin/bookings/view/widgets/add_new_booking_widget.dart';
 import 'package:car_workshop_flutter/src/feature/admin/bookings/view/widgets/booking_card_widget.dart';
+import 'package:car_workshop_flutter/src/feature/authentication/controller/authentication_controller.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,6 +24,21 @@ class AdminDashboardScreen extends ConsumerWidget {
 
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: Text(
+            'Admin Dashboard',
+            style: TextStyle(color: Colors.white),
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  _onLogoutButtonPressed(context, ref);
+                },
+                icon: Icon(Icons.logout, color: Colors.white))
+          ],
+        ),
         backgroundColor: Colors.white,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -229,5 +245,11 @@ class AdminDashboardScreen extends ConsumerWidget {
 
   _onAddNewBookingButtonPressed(BuildContext ctx) {
     ctx.push(AddNewBookingWidget.routePath);
+  }
+
+  _onLogoutButtonPressed(BuildContext context, WidgetRef ref) {
+    ref
+        .read(authenticationControllerProvider.notifier)
+        .logout(context: context);
   }
 }

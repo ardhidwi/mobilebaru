@@ -5,7 +5,6 @@ class FailureMessage {
 
 class SuccessMessage {
   static const bookingSuccess = "Bookings Fetched Successfully";
-  static const mechanicSuccess = "Mechanics Fetched Successfully";
   static const bookingCreateSuccess = "Bookings Created Successfully";
   static const registerSuccess = "Registration Successful";
 }

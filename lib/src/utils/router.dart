@@ -3,6 +3,7 @@ import 'package:car_workshop_flutter/src/feature/admin/bookings/view/widgets/add
 import 'package:car_workshop_flutter/src/feature/authentication/view/admin_login_screen.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/register_mechanic_screen.dart';
+import 'package:car_workshop_flutter/src/feature/mechanic/bookings/view/mechanic_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:car_workshop_flutter/src/global/views/splash.dart';
 import 'package:car_workshop_flutter/src/feature/home/view/home.dart';
@@ -51,6 +52,12 @@ final GoRouter router = GoRouter(
       path: AddNewBookingWidget.routePath,
       builder: (BuildContext context, GoRouterState state) {
         return AddNewBookingWidget();
+      },
+    ),
+    GoRoute(
+      path: MechanicDashboardScreen.routePath,
+      builder: (BuildContext context, GoRouterState state) {
+        return const MechanicDashboardScreen();
       },
     ),
   ],
