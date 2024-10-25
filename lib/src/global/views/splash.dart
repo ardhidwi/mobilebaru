@@ -1,5 +1,6 @@
 import 'package:car_workshop_flutter/src/feature/admin/bookings/view/admin_dashboard.dart';
 import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
+import 'package:car_workshop_flutter/src/feature/mechanic/bookings/view/mechanic_dashboard.dart';
 import 'package:car_workshop_flutter/src/global/controller/shared_prefs_controller.dart';
 import 'package:car_workshop_flutter/src/utils/asset_urls.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
         /// Route the user to Home screen
         context.go(AdminDashboardScreen.routePath);
       } else {
-        context.go(AdminDashboardScreen.routePath);
+        context.go(MechanicDashboardScreen.routePath);
       }
     });
   }
