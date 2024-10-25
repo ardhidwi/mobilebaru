@@ -52,7 +52,10 @@ class NetworkRepo {
   }
 
   FutureEither<Response> postRequest(
-      {required String url, dynamic body, bool requireAuth = true}) async {
+      {required String url,
+      dynamic body,
+      bool requireAuth = true,
+      dynamic queryParams}) async {
     final Map<String, String> requestHeaders = {
       "Content-Type": "application/json",
       "Cookie": "token=$_authToken"
@@ -68,8 +71,11 @@ class NetworkRepo {
       log('BODY : $body', name: LogLabel.httpPost);
     }
     try {
-      final response = await post(Uri.parse(url),
-          body: jsonEncode(body), headers: requestHeaders);
+      final response = await post(
+        Uri.parse(url),
+        body: jsonEncode(body),
+        headers: requestHeaders,
+      );
       log('STATUS CODE : ${response.statusCode}', name: LogLabel.httpPost);
 
       log('RESPONSE : ${response.body}', name: LogLabel.httpPost);
