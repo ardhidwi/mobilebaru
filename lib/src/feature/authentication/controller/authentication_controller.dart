@@ -1,3 +1,6 @@
+import 'package:car_workshop_flutter/src/feature/admin/bookings/view/admin_dashboard.dart';
+import 'package:car_workshop_flutter/src/feature/authentication/view/login_screen.dart';
+import 'package:car_workshop_flutter/src/feature/mechanic/bookings/view/mechanic_dashboard.dart';
 import 'package:car_workshop_flutter/src/global/controller/shared_prefs_controller.dart';
 import 'package:car_workshop_flutter/src/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +10,7 @@ import 'package:car_workshop_flutter/src/feature/authentication/res/messages.dar
 import 'package:car_workshop_flutter/src/models/product.dart';
 import 'package:car_workshop_flutter/src/utils/config.dart';
 import 'package:car_workshop_flutter/src/utils/snackbar_service.dart';
+import 'package:go_router/go_router.dart';
 
 final authenticationControllerProvider =
     StateNotifierProvider<AuthenticationController, bool>((ref) {
@@ -46,6 +50,7 @@ class AuthenticationController extends StateNotifier<bool> {
 
         ref.read(sharedPrefsControllerPovider).setUser(user: user);
         state = false;
+        context!.go(MechanicDashboardScreen.routePath);
         return user;
       },
     );
@@ -75,6 +80,7 @@ class AuthenticationController extends StateNotifier<bool> {
         }
         ref.read(sharedPrefsControllerPovider).setUser(user: user);
         state = false;
+        context!.go(AdminDashboardScreen.routePath);
         return user;
       },
     );
@@ -108,8 +114,17 @@ class AuthenticationController extends StateNotifier<bool> {
               context: context, message: SuccessMessage.registerSuccess);
         }
         state = false;
+        context!.go(LoginScreen.routePath);
         return user;
       },
     );
+  }
+
+  Future<void> logout({BuildContext? context}) async {
+    state = true;
+
+    await ref.read(sharedPrefsControllerPovider).clear();
+    context!.go(LoginScreen.routePath);
+    state = false;
   }
 }
