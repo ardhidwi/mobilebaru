@@ -43,7 +43,7 @@ class MechanicsController extends StateNotifier<BaseState> {
       (mechanics) {
         if (AppConfig.devMode && context != null) {
           SnackBarService.showSnackBar(
-              context: context, message: SuccessMessage.bookingSuccess);
+              context: context, message: SuccessMessage.mechanicSuccess);
         }
 
         state = SuccessState(data: mechanics);
